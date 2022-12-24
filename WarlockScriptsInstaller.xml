@@ -88,8 +88,7 @@ end
 function downloadScripts()
     pcall(deleteDir, scriptsDirectory)
     registerAnonymousEventHandler("sysDownloadDone", "handleDownload", true)
-    registerAnonymousEventHandler("sysDownloadError", "handleDownloadErrors", true)
-    display("Pobieran " .. zipBallUrl)
+    registerAnonymousEventHandler("sysDownloadError", "handleDownloadErrors", true)    
     downloadFile(scriptsZip, zipBallUrl)
     cecho("\n&lt;CadetBlue&gt;(skrypty)&lt;tomato&gt;: Pobieram aktualna paczke skryptow (".. version ..")\n")
 end
