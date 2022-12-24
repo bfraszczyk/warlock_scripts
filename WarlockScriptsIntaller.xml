@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE MudletPackage>
-<MudletPackage version="1.001">
+<MudletPackage version="1.000">
 	<ScriptPackage>
 		<Script isActive="yes" isFolder="no">
-			<name>ArkadiaScriptsInstaller</name>
+			<name>WarlockScriptsIntaller</name>
 			<packageName></packageName>
 			<script>local installer = {}
 
@@ -14,13 +14,13 @@ function lfs.isdir(dir)
     return exists
 end
 
-local latest_release = "https://api.github.com/repos/tjurczyk/arkadia/releases/latest"
+local latest_release = "https://api.github.com/repos/bfraszczyk/warlock_scripts/releases/latest"
 local latest_file = getMudletHomeDir() .. "/latest.json"
-local url = "https://codeload.github.com/tjurczyk/arkadia/zip/"
-local scriptsZip = getMudletHomeDir() .. "/scripts.zip"
-local installerXML = getMudletHomeDir() .. "/ArkadiaScriptsInstaller.xml"
+local url = "https://codeload.github.com/bfraszczyk/warlock_scripts/zip/"
+local scriptsZip = getMudletHomeDir() .. "/warlock_scripts.zip"
+local installerXML = getMudletHomeDir() .. "/WarlockScriptsInstaller.xml"
 local unzipDirectory = ""
-local scriptsDirectory = getMudletHomeDir() .. "/arkadia/"
+local scriptsDirectory = getMudletHomeDir() .. "/warlock_scripts/"
 
 if lfs.isdir(scriptsDirectory .. ".git/") then
     cecho("\n&lt;CadetBlue&gt;(skrypty)&lt;tomato&gt;: Katalog " .. scriptsDirectory .. " to repozytorium .git\n")
@@ -44,7 +44,7 @@ function handleVersionDownload(_, filename, callback)
         local response = yajl.to_value(file:read("*a"))
         file:close()
         os.remove(latest_file)
-        unzipDirectory = getMudletHomeDir() .. "/arkadia-".. response.name .."/"
+        unzipDirectory = getMudletHomeDir() .. "/warlock_scripts"
         tempTimer(0.1, function() downloadScripts(response.name) end)
     end
 end
@@ -75,10 +75,10 @@ function handleUnzipEvents(event, ...)
     if event == "sysUnzipDone" then
         os.remove(scriptsZip)
         os.remove(installerXML)
-        disableScript("ArkadiaScriptsInstaller")
-        uninstallPackage("Arkadia")
-        uninstallPackage("generic_mapper")
-        uninstallPackage("skrypty_master3")
+        disableScript("WarlockScriptsInstaller")
+        uninstallPackage("warlock")
+        uninstallPackage("Warlock")
+        uninstallPackage("generic_mapper")        
         uninstallPackage(installer.name)
         tempTimer(2, function()
             os.rename(unzipDirectory, scriptsDirectory)
