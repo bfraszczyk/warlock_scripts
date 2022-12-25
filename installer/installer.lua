@@ -11,7 +11,7 @@ function scripts.installer:on_scripts_version(version)
 end
 
 function scripts.installer:update_scripts(version)
-    local short_repo_name = repo:gsub("(.*)/", "")
+    local short_repo_name = scripts.installer.main_repo:gsub("(.*)/", "")
     local url = "https://codeload.github.com/" .. scripts.installer.main_repo .. "/zip/" .. version
 
     if (mudletOlderThan(4, 6)) then
