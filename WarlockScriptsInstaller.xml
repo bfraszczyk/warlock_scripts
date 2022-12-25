@@ -63,7 +63,7 @@ function downloadScripts(tag_name)
     registerAnonymousEventHandler("sysDownloadError", "handleDownloadErrors", true)    
     unzippedDirectoryName = unzippedDirectoryName .. tag_name
     downloadFile(scriptsZip, download_base_url .. tag_name)
-    cecho("\n&lt;CadetBlue&gt;(skrypty)&lt;tomato&gt;: Pobieram aktualna paczke skryptow (".. version ..")\n")
+    cecho("\n&lt;CadetBlue&gt;(skrypty)&lt;tomato&gt;: Pobieram aktualna paczke skryptow (".. tag_name ..")\n")
 end
 
 function handleDownload(_, filename)
