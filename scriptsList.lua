@@ -1,6 +1,7 @@
 return {
     "skrypty",
     "utils_func",
+    "lfs",
     "okienka/okienka",
     "okienka/GeyserExt",
     "okienka/utils",
@@ -46,5 +47,5 @@ return {
     "aliases/chodzik",
     "statystyka/licznik_postepow",
     "gmcp/gmcp_Improve",
-    "statystyka/runes",    
+    "statystyka/runes",        
 }

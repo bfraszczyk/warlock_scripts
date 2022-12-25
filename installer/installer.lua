@@ -30,13 +30,13 @@ function scripts.installer:update_scripts(version)
     end
 
     scripts.installer.version_tag = nil
-    if repo == scripts.installer.main_repo and (tag:match("%d+%.%d+%.%d+") or tag:match("%d+%.%d+")) then
+    if version:match("%d+%.%d+%.%d+") or version:match("%d+%.%d+") then
         scripts.installer.version_tag = version
     end
 
     scripts.installer.scripts_download_handler = scripts.event_register:force_register_event_handler(scripts.installer.scripts_download_handler, "sysDownloadDone", function(_, filename) scripts.installer:handle_scripts_download(_, filename) end)
     downloadFile(scripts.installer.scripts_zip, url)
-    scripts:print_log("Pobieram paczke skryptow " .. branch .. " z repozytorium " .. repo)
+    scripts:print_log("Pobieram paczke skryptow z repozytorium. Wersja: " .. version)
 end
 
 function scripts.installer:handle_scripts_download(_, filename)

@@ -85,10 +85,7 @@ function scripts.help:displayHelp()
 end
 registerAnonymousEventHandler("sysDataSendRequest", scripts.help.handleHelpCommands)
 
-
-tempTimer(4, function() cecho("\n<white>Wpisz /help aby uzyskac pomoc.\n\n") end)
-
-tempTimer(6, [[ scripts:print_start_message() ]])
+tempTimer(4, [[ scripts:print_start_message() ]])
 
 function scripts:print_start_message()
     scripts:print_log("Uzywasz Warlock Skrypty, ver. " .. scripts.ver .. ". Pomoc dostepna w '/help'")
