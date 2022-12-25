@@ -15,16 +15,15 @@ function lfs.isdir(dir)
 end
 
 local latest_release = "https://api.github.com/repos/bfraszczyk/warlock_scripts/releases/latest"
-local list_of_tags_url = "https://api.github.com/repos/bfraszczyk/warlock_scripts/tags?per_page=100"
+local download_base_url = "https://codeload.github.com/bfraszczyk/warlock_scripts/zip/"
+
 local latest_file = getMudletHomeDir() .. "/latest.json"
 local scriptsZip = getMudletHomeDir() .. "/warlock_scripts.zip"
 local installerXML = getMudletHomeDir() .. "/WarlockScriptsInstaller.xml"
 local unzipDirectory = ""
 local scriptsDirectory = getMudletHomeDir() .. "/warlock_scripts/"
-local tags_file = getMudletHomeDir() .. "/tags.json"
-local unzippedDirectoryName = "bfraszczyk-warlock_scripts-"
-local currentTag = ""
-local zipBallUrl = ""
+local unzippedDirectoryName = "warlock_scripts-"
+
 if lfs.isdir(scriptsDirectory .. ".git/") then
     cecho("\n&lt;CadetBlue&gt;(skrypty)&lt;tomato&gt;: Katalog " .. scriptsDirectory .. " to repozytorium .git\n")
     cecho("&lt;CadetBlue&gt;(skrypty)&lt;tomato&gt;: Chyba nie chcesz nadpisac repozytorium w ten sposob? :)\n")
@@ -37,34 +36,7 @@ function installScripts()
     registerAnonymousEventHandler("sysDownloadError", "handleDownloadErrors", true)
 end
 
-function downloadTags(tagName,url)
-    registerAnonymousEventHandler("sysDownloadDone", "handleDownloadTags", true)
-    registerAnonymousEventHandler("sysDownloadError", "handleDownloadErrors", true)
-    currentTag = tagName
-    zipBallUrl = url    
-    downloadFile(tags_file, list_of_tags_url)
-end
 
-function handleDownloadTags(_, filename, callback)
-     if filename ~= tags_file then
-        return true
-    end
-    local file = io.open(tags_file, "rb")
-    if file then
-        local response = yajl.to_value(file:read("*a"))
-        file:close()
-        os.remove(tags_file)
-        local sha = ""
-        for k,v in pairs(response) do
-            if v.name == currentTag then
-                sha = string.sub(v.commit.sha,1,7)
-            end
-        end
-        unzippedDirectoryName = unzippedDirectoryName .. sha    
-
-        tempTimer(0.1, function() downloadScripts() end)
-    end    
-end
 function handleVersionDownload(_, filename, callback)
     if filename ~= latest_file then
         return true
@@ -76,7 +48,7 @@ function handleVersionDownload(_, filename, callback)
         file:close()
         os.remove(latest_file)
         unzipDirectory = getMudletHomeDir() .. "/warlock_scripts"
-        tempTimer(0.1, function() downloadTags(response.tag_name,response.zipball_url) end)       
+        tempTimer(0.1, function() downloadScripts(response.tag_name) end)        
     end
 end
 
@@ -85,11 +57,12 @@ function handleDownloadErrors(_, errorFound)
    uninstallPackage(installer.name)
 end
 
-function downloadScripts()
+function downloadScripts(tag_name)
     pcall(deleteDir, scriptsDirectory)
     registerAnonymousEventHandler("sysDownloadDone", "handleDownload", true)
     registerAnonymousEventHandler("sysDownloadError", "handleDownloadErrors", true)    
-    downloadFile(scriptsZip, zipBallUrl)
+    unzippedDirectoryName = unzippedDirectoryName .. tag_name
+    downloadFile(scriptsZip, download_base_url .. tag_name)
     cecho("\n&lt;CadetBlue&gt;(skrypty)&lt;tomato&gt;: Pobieram aktualna paczke skryptow (".. version ..")\n")
 end
 

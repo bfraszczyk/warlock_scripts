@@ -1,5 +1,6 @@
 return {
     "skrypty",
+    "utils_func",
     "okienka/okienka",
     "okienka/GeyserExt",
     "okienka/utils",
@@ -35,12 +36,15 @@ return {
     "triggers/skrzynie",
     "triggers/ekwipunek",
     "triggers/mowienie",
+    "http_client",
+    "installer/latest",
+    "installer/installer",
+    "event_register",
     "help/help",
     "aliases/aliases",
     "aliases/wyjscia",
     "aliases/chodzik",
     "statystyka/licznik_postepow",
     "gmcp/gmcp_Improve",
-    "statystyka/runes",
-    
+    "statystyka/runes",    
 }

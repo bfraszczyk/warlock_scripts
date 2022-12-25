@@ -87,3 +87,10 @@ registerAnonymousEventHandler("sysDataSendRequest", scripts.help.handleHelpComma
 
 
 tempTimer(4, function() cecho("\n<white>Wpisz /help aby uzyskac pomoc.\n\n") end)
+
+tempTimer(6, [[ scripts:print_start_message() ]])
+
+function scripts:print_start_message()
+    scripts:print_log("Uzywasz Warlock Skrypty, ver. " .. scripts.ver .. ". Pomoc dostepna w '/help'")
+    scripts.latest:is_latest(function(release_info) scripts:print_log("Dostepna jest nowa wersja (" .. release_info.tag_name .. "). Wpisz /aktualizuj_skrypty zeby zaktualizowac") cecho("\n<SlateGray>" .. release_info.body .."\n<reset>") end)
+end

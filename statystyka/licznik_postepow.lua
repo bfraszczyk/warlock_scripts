@@ -108,7 +108,7 @@ function scripts.licznik_postepow:improve_reset()
 
     scripts.licznik_postepow["level_snapshots"] = {}
     scripts.licznik_postepow["improve_start_timestamp"] = getEpoch()
-    scripts.print_log("Licznik zresetowany")
+    scripts:print_log("Licznik zresetowany")
 end
 function scripts.licznik_postepow:real_len(str)
     str = str:gsub("<[^<]*>", "")
@@ -168,5 +168,5 @@ function scripts.licznik_postepow:improve_reset()
 
     scripts.licznik_postepow["level_snapshots"] = {}
     scripts.licznik_postepow["improve_start_timestamp"] = getEpoch()
-    scripts.print_log("Licznik zresetowany")
+    scripts:print_log("Licznik zresetowany")
 end

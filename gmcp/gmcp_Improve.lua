@@ -32,7 +32,7 @@ function gmcp_improve()
     
     table.insert(scripts.licznik_postepow["level_snapshots"], snapshot)
     
-    scripts.print_log("[" .. snapshot["time"] .. "] Wlasnie wbiles postepy: " .. scripts.licznik_postepow.opisy_postepow[poziom] .. " (czas: " .. snapshot["time_passed"] .. ")\n Wszystkich postepow w sesji: " .. total)
+    scripts:print_log("[" .. snapshot["time"] .. "] Wlasnie wbiles postepy: " .. scripts.licznik_postepow.opisy_postepow[poziom] .. " (czas: " .. snapshot["time_passed"] .. ")\n Wszystkich postepow w sesji: " .. total)
 end
 
 if scripts.event_handlers["scripts/gmcp/GmcpImprove"] then
