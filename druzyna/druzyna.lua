@@ -1,4 +1,5 @@
 scripts["druzyna"] = scripts["druzyna"] or {}
+scripts.druzyna.members = {}
 function scripts.druzyna:removeTeam()
 	--display(debug.traceback())
 	local stats = scripts.windows:getWholeTeam()
@@ -17,4 +18,16 @@ function scripts.druzyna:druzynaPodmien(id, imie)
 		stat.imieLabel:echo("<center><b>" .. imie .. "</b></center>")
 		stat.imie = imie
 	end
+end
+function scripts.druzyna:removeMemberById(id)
+	local key = nil
+	for k,v in pairs(scripts.druzyna.members) do
+		if v.id == id then
+			key = k
+		end		
+	end
+	if key ~= nil then
+		scripts.druzyna.members[key]= nil	
+	end
+	
 end

@@ -3,6 +3,10 @@ function gmcp_Kill()
 	local a = gmcp.Kill	
 	scripts.windows:hideEnemyStatsFor(a.kogo.id)
 	scripts.zabici:dodajZabitego(a.kto.nazwa, a.kogo.nazwa)
+	scripts.counter:add_killed(a.kogo.rasa,string.lower(a.kto.nazwa))
+	if scripts.character_name == string.lower(a.kto.nazwa) then
+		scripts.counter2:add_item(a.kogo.nazwa, a.kogo.rasa)
+	end
 	raiseEvent("warlock.someoneDied", a.kto.nazwa, a.kogo.nazwa)	
 end
 

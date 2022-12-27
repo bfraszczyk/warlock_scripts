@@ -2,6 +2,8 @@ return {
     "skrypty",
     "utils_func",
     "lfs",
+    "utils/string",
+    "utils/downloader",
     "okienka/okienka",
     "okienka/GeyserExt",
     "okienka/utils",
@@ -48,4 +50,8 @@ return {
     "statystyka/licznik_postepow",
     "gmcp/gmcp_Improve",
     "statystyka/runes",        
+    "statystyka/counter/counter",
+    "statystyka/counter/counter2",
+    "statystyka/counter/utils",    
+    "mapper/update"
 }

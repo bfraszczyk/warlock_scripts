@@ -213,7 +213,7 @@ function scripts.windows:showEnemyStatsFor(id, enemy_id, enemy_name, move_enemy)
 		enemy_stat = scripts.windows:createStatsContainer({id = enemy_id, imie = ename, real_name = enemy_name, paski = scripts.windows.paski_inni, is_enemy = true, name = "stats_" .. seq, seq = seq}, nasz_stat.container)
 		nasz_stat.container:reposition()
 	elseif(enemy_stat.container ~= nasz_stat.container and move_enemy == true) then
-		debugmsg("* Moving enemy " .. enemy_stat.id .. " to " .. nasz_stat.id)
+		scripts.windows:debugmsg("* Moving enemy " .. enemy_stat.id .. " to " .. nasz_stat.id)
 		local old_row = enemy_stat.container
 		old_row:remove(enemy_stat)
 		old_row:reposition()

@@ -1,6 +1,6 @@
 function gmcp_char_info()
     if(gmcp.Char.Info == nil) then return end
-    scripts.character_name = gmcp.Char.Info.name
+    scripts.character_name = string.lower(gmcp.Char.Info.name)
     scripts.character_id = gmcp.Char.Info.id
 end
 

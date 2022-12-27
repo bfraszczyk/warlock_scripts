@@ -1,3 +1,4 @@
+---wiekszosc kodu pobrana z https://github.com/tjurczyk/arkadia, przerobione na potrzeby warlocka
 scripts["licznik_postepow"] = scripts["licznik_postepowew"] or {ver = "2.0 by Haldir",
     opisy_postepow = 
     {
@@ -57,6 +58,8 @@ function scripts.licznik_postepow:print_improve()
 
     for k, v in pairs(scripts.licznik_postepow["level_snapshots"]) do
         local when_got = string.sub(v["time"] .. "                    ", 1, 18)
+        sum_me_killed = v["me_killed"]
+        sum_all_killed = v["all_killed"]
 
         -- fix timestamp if /expstart was used
         if k > 1 and scripts.licznik_postepow.level_snapshots[k]["timestamp"] < scripts.licznik_postepow.level_snapshots[k - 1]["timestamp"] then
@@ -66,25 +69,44 @@ function scripts.licznik_postepow:print_improve()
         last_time_stamp = v.timestamp
         local time_str = v["time_passed"]
 
+        local killed_str = nil
+        if k == 1 then
+            killed_str = tostring(v["me_killed"]) .. "/" .. tostring(v["all_killed"])
+        else
+            killed_str = tostring(v["me_killed"] - scripts.licznik_postepow.level_snapshots[k - 1]["me_killed"]) .. "/" .. tostring(v["all_killed"] - scripts.licznik_postepow.level_snapshots[k - 1]["all_killed"])
+        end
+
       
 
         local name = string.sub(scripts.licznik_postepow["opisy_postepow"][v["level"]] .. "                ", 1, 16)
         local sep = ": "
         local details_time = string.sub("czas " .. time_str .. "                ", 1, 14)
+        local details_killed = string.sub(" zabici " .. killed_str .. "                ", 1, 14)
 
-        cecho("| " .. scripts.licznik_postepow:str_pad(tostring(k), 2, "right") .. ". " .. name .. sep .. when_got .. sep .. details_time .. "                   |\n")
+        cecho("| " .. scripts.licznik_postepow:str_pad(tostring(k), 2, "right") .. ". " .. name .. sep .. when_got .. sep .. details_time .. sep .. details_killed .. "   |\n")
+    end
+    if scripts.counter.killed_amount[scripts.character_name] == nil then
+        scripts.counter.killed_amount[scripts.character_name] = 0
     end
 
     local since_last_str = nil;
     if last_time_stamp then
         local seconds_since_last = getEpoch() - last_time_stamp
-        since_last_str = string.format("Od ostatniego postepu: %s ",
-        scripts.licznik_postepow:seconds_to_formatted_string(seconds_since_last))
+        since_last_str = string.format("Od ostatniego postepu: %s : zabici: %s/%s",
+        scripts.licznik_postepow:seconds_to_formatted_string(seconds_since_last),
+        tostring(scripts.counter.killed_amount[scripts.character_name] - sum_me_killed),
+        tostring(scripts.counter.all_kills - sum_all_killed))
     end
     
 
+    cecho("|                                                                            |\n")
+    cecho("| <orange>ZABITYCH<grey>                                                                   |\n")
+    cecho("| <LawnGreen>JA<grey> ... : <orange>" .. string.sub(tostring(sum_me_killed) .. "      ", 1, 6) .. "<grey>                                                            |\n")
+    cecho("| <LawnGreen>WSZYSCY<grey>: <orange>" .. string.sub(tostring(sum_all_killed) .. "      ", 1, 6) .. "<grey>                                                            |\n")
+    cecho("|                                                                            |\n")
+
     if since_last_str then
-        cecho("| <SlateBlue>".. string.sub(since_last_str .."", 1,40) .. " <reset>                                             |\n")
+        cecho("| <SlateBlue>".. string.sub(since_last_str .."                                ", 1, 74) .. " <reset>|\n")
         cecho("|                                                                            |\n")
     end
     cecho("+----------------------------------------------------------------------------+\n")
