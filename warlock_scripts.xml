@@ -2129,7 +2129,7 @@
 				</Alias>
 				<Alias isActive="yes" isFolder="no">
 					<name>zabici2</name>
-					<script>alias_zabici2_func()</script>
+					<script>alias_licznik_zabici2_short_func()</script>
 					<command></command>
 					<packageName></packageName>
 					<regex>^/zabici2$</regex>
@@ -2168,6 +2168,27 @@
 					<command></command>
 					<packageName></packageName>
 					<regex>^/statsfix$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>zabici2!</name>
+					<script>alias_licznik_zabici2_long_func()</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^/zabici2!$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>zabici2_data</name>
+					<script>alias_licznik_zabici2_date_func()</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^/zabici2 (.*)$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>zabici2_reset</name>
+					<script>alias_zabici2_reset_func()</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^/zabici2_reset$</regex>
 				</Alias>
 			</AliasGroup>
 			<AliasGroup isActive="yes" isFolder="yes">
@@ -2295,6 +2316,27 @@ Adjustable.Container:doAll(deleteSaveFile)
 						<command></command>
 						<packageName></packageName>
 						<regex>^/resetujruny$</regex>
+					</Alias>
+				</AliasGroup>
+				<AliasGroup isActive="yes" isFolder="yes">
+					<name>counter</name>
+					<script></script>
+					<command></command>
+					<packageName></packageName>
+					<regex></regex>
+					<Alias isActive="yes" isFolder="no">
+						<name>zabici</name>
+						<script>alias_zabici_func()</script>
+						<command></command>
+						<packageName></packageName>
+						<regex>^/zabici$</regex>
+					</Alias>
+					<Alias isActive="yes" isFolder="no">
+						<name>reset_zabici</name>
+						<script>alias_reset_zabici_func()</script>
+						<command></command>
+						<packageName></packageName>
+						<regex>^/zabici_reset$</regex>
 					</Alias>
 				</AliasGroup>
 			</AliasGroup>
