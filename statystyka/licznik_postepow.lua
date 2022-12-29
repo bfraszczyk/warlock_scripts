@@ -1,5 +1,5 @@
 ---wiekszosc kodu pobrana z https://github.com/tjurczyk/arkadia, przerobione na potrzeby warlocka
-scripts["licznik_postepow"] = scripts["licznik_postepowew"] or {ver = "2.0 by Haldir",
+scripts["licznik_postepow"] = scripts["licznik_postepow"] or {ver = "2.0 by Haldir",
     opisy_postepow = 
     {
         [0] = "znikome",
