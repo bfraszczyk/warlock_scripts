@@ -53,5 +53,7 @@ return {
     "statystyka/counter/counter",
     "statystyka/counter/counter2",
     "statystyka/counter/utils",    
-    "mapper/update"
+    "mapper/update",
+    "triggers/cechy",
+    "triggers/cechy_poziomy"    
 }
