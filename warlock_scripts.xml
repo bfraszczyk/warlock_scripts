@@ -2107,14 +2107,7 @@
 				<regexCodePropertyList />
 				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
 					<name>cechy</name>
-					<script>  local sila = matches[2]
-  local zrecznosc = matches[3]
-  local wytrzymalosc = matches[4]
-  local inteligencja = matches[5]
-  local madrosc = matches[6]
-  local odwaga = matches[7]
-  
- policz_cechy(sila, zrecznosc, wytrzymalosc, inteligencja, madrosc, odwaga)</script>
+					<script>trigger_licznik_cech_cechy_func()</script>
 					<triggerType>0</triggerType>
 					<conditonLineDelta>0</conditonLineDelta>
 					<mStayOpen>0</mStayOpen>
@@ -2234,6 +2227,13 @@
 					<command></command>
 					<packageName></packageName>
 					<regex>^/zabici2_reset$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>/reload</name>
+					<script>load_scripts(true)</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^/reload$</regex>
 				</Alias>
 			</AliasGroup>
 			<AliasGroup isActive="yes" isFolder="yes">

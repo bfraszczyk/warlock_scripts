@@ -54,6 +54,5 @@ return {
     "statystyka/counter/counter2",
     "statystyka/counter/utils",    
     "mapper/update",
-    "triggers/cechy",
-    "triggers/cechy_poziomy"    
+    "triggers/cechy"
 }
