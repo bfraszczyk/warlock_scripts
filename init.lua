@@ -41,6 +41,12 @@ function load_scripts(force)
     
     scripts_loaded = true
     raiseEvent("scriptsLoaded")    
+    if force then
+        if gmcp.Char.Info ~= nil then
+            scripts.character_name = string.lower(gmcp.Char.Info.name)
+            scripts.character_id = gmcp.Char.Info.id
+        end
+    end
 end
 
 load_scripts(false)

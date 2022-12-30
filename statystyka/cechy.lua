@@ -99,14 +99,13 @@ scripts["licznik_cech"] = scripts["licznik_cech"] or {}
     
 
 
-function trigger_licznik_cech_cechy_func()
-  local sila = matches[2]
-  local zrecznosc = matches[3]
-  local wytrzymalosc = matches[4]
-  local inteligencja = matches[5]
-  local madrosc = matches[6]
-  local odwaga = matches[7]
-
+function trigger_licznik_cech_cechy_func()  
+  local sila = trim_string(matches[2])
+  local zrecznosc = trim_string(matches[3])
+  local wytrzymalosc = trim_string(matches[4])
+  local inteligencja = trim_string(matches[5])
+  local madrosc = trim_string(matches[6])
+  local odwaga = trim_string(matches[7])
   selectCurrentLine()
   replace("")
   s = "<red>[cos poszlo nie tak]<reset>"
@@ -231,7 +230,7 @@ function trigger_licznik_cech_cechy_func()
       str = string.sub(odwaga, 0, string.len(odwaga)-1)
     end
     
-    str = string.sub(odwaga, 0, string.len(odwaga)-1)
+    
     if scripts.licznik_cech.odwagaall[str] then
       o_l = scripts.licznik_cech.odwagaall[str]
       if string.find(odwaga, "jak na legende") then

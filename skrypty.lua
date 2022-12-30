@@ -1,4 +1,4 @@
-scripts = scripts or { ver = "4.0.3" }
+scripts = scripts or { ver = "4.0.4" }
 scripts["event_handlers"] = scripts["event_handlers"] or {}
 scripts["utils"] = {}
 scripts.character_name = ""

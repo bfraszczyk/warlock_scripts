@@ -2,6 +2,7 @@ return {
     "skrypty",
     "utils_func",
     "lfs",
+    "utils/db_fix",
     "utils/string",
     "utils/downloader",
     "okienka/okienka",
@@ -48,11 +49,13 @@ return {
     "aliases/wyjscia",
     "aliases/chodzik",
     "statystyka/licznik_postepow",
+    "statystyka/licznik_postepow2",
     "gmcp/gmcp_Improve",
     "statystyka/runes",        
     "statystyka/counter/counter",
     "statystyka/counter/counter2",
     "statystyka/counter/utils",    
     "mapper/update",
-    "triggers/cechy"
+    "statystyka/cechy",
+    "aliases/postepy"    
 }

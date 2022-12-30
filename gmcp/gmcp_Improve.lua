@@ -4,9 +4,9 @@ function gmcp_improve()
     if poziom == scripts.licznik_postepow.current_improve_level then
       return
     end
-    
+    scripts.licznik_postepow.postepy_w_sesji = total
     scripts.licznik_postepow.current_improve_level = poziom
-    
+    scripts.licznik_postepow:add_improvee2(1)
     if poziom > 17 then
       poziom = math.fmod(poziom,17)
     end

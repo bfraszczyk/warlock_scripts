@@ -22,7 +22,8 @@ scripts["licznik_postepow"] = scripts["licznik_postepow"] or {ver = "2.0 by Hald
         [17] = "fantastyczne"
     },
     postepy_w_sesji = 0,
-    poprzednie_postepy = 0
+    poprzednie_postepy = 0,
+    postepy_dzisiaj = 0
     }
 scripts.licznik_postepow["db_improvee"] = db:create("improvee", {
     improvee = {
