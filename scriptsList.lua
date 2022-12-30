@@ -17,6 +17,7 @@ return {
     "odmiana/odmiana",
     "statystyka/zabici",
     "statystyka/opisy_poziomow",
+    "druzyna/druzyna",
     "gmcp/gmcp_Room_Glance",
     "gmcp/gmcp_Room_Info",
     "gmcp/gmcp_Room_Leave",

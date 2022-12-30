@@ -79,7 +79,7 @@ end
 function trigger_druzyna_czlonek_func()    
     local prowadzacy = matches[2]
     local kto = matches[6]
-    local szereg = szeregi[matches[7]]
+    local szereg = scripts.opisy_poziomow.szeregi[matches[7]]
 
     selectCaptureGroup(2)
     fg("white")
@@ -94,7 +94,7 @@ end
 function trigger_druzyna_moj_szereg_func()
     --display(matches)
 
-    local szereg = szeregi[matches[7]]
+    local szereg = scripts.opisy_poziomow.szeregi[matches[7]]
     local sam_stoje = #matches[6] > 0
     local kto = sam_stoje and matches[6] or matches[4]
 
@@ -102,7 +102,7 @@ function trigger_druzyna_moj_szereg_func()
 end
 
 function trigger_druzyna_szereg_nie_moj_func()
-    local szereg = szeregi[matches[2]]
+    local szereg = scripts.opisy_poziomow.szeregi[matches[2]]
     local kto = matches[4]
     
     local kto = kto:gsub(", ", "|"):gsub(" i ", "|"):split("|")

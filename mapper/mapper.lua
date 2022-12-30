@@ -241,7 +241,7 @@ end
 function scripts.mapper:insertVisibleDoors(roomId, drzwi)
 	for i, door_data in ipairs(drzwi) do
 		if(scripts.mapper.kierunki[door_data[1]] ~= nil) then
-			if not hasExit(roomId, door_data[1]) then
+			if not scripts.mapper:hasExit(roomId, door_data[1]) then
 				setExitStub(roomId, scripts.mapper.kierunki[door_data[1]][2], true)
 			end
          -- Glupie troche - nie rysuje drzwi na exitStubach
